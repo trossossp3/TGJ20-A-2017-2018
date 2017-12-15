@@ -1,0 +1,54 @@
+body{
+	font-size: small;
+	font-family: verdana, helvetica, arial, sans-serif;
+	line-height: 200%;
+}
+
+h1,h2 {color:#007e7e;
+}
+
+h1 {
+	font-size: 150%;
+}
+
+h2 {
+	font-size: 130%;
+}
+
+.guarantee {
+    border-color: white;
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 20px;
+    background-color: #a7cece;
+    padding: 25px;
+    padding-left: 80px;
+    margin: 30px;
+    margin-right: 250px;
+    line-height: 1.9em;
+    font-style: italic;
+    color: #444;
+    font-family: Georgia,"times new roman",times,serif;
+    background-image: url(../images/background.gif);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+#drink{
+    border-width: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-style: solid;
+    border-color: #007e7e;
+    background-image: url(../images/cocktail.gif);
+    background-repeat: repeat-x;
+    float: right;
+}
+#footer{
+    font-size: 0.6em;
+    text-align: center;
+    font-size: 50%;
+    line-height: 140%;
+    bottom: 0px;
+    clear: right;
+}

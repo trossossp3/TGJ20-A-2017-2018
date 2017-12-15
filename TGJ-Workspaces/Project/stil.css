@@ -1,0 +1,17 @@
+p {
+	color: red;
+	font-size: 100%;
+	text-align-last: left;
+	font-family: Arial, Times, serif;
+}div {
+    width: 1000px;
+    border: 10px solid blue;
+    padding: 2px;
+    margin: 25px;
+    align-self: center;
+} h1 {
+	color: red;
+	font-size: 200%;
+	text-align: center;
+	font-style: bold;
+}
