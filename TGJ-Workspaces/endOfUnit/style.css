@@ -1,6 +1,10 @@
+body{
+	background-color: #658ea6
+}
 nav{
-	background-color: #efe5d0;
+	background-color: #b5d4e6;
 	margin: 10px 10px 0px 10px;
+	text-align: center;
 	padding-left: auto;
 	padding-right: auto;
 }
@@ -15,23 +19,20 @@ nav ul li{
 
 }
 nav ul li a:link{
-		color: #954b4b;
+		color: #04080b;
 		border-bottom: none;
 		font-weight: bold;
 
 }
 nav ul li a:visited{
-	color: #954b4b;
+	color: #2d546b;
 	border-bottom: none;
 		font-weight: bold;
 	}
 nav ul li a:active{
-color: #675c47;
+color: #FFFF;
 }
 
 nav ul li a:hover{
-color: #675c47;	
+color: #ffff;	
 }
-
- 
-
