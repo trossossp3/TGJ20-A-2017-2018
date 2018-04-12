@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<title>Checkboxes</title>
+	</head>
+	<body>
+		<div id="mainSection">
+			<div id="header">
+				<ul class="navbar">
+				  <li><a href="home.html">Home</a></li>
+				  <li><a href="textfields.html">Text/Date Fields</a></li>
+				  <li><a class="active" href="checkboxes.html">Checkboxes</a></li>
+				  <li><a href="radiobuttons.html">Radio Buttons</a></li>
+				  <li><a href="selectlists.html">Select Lists</a></li>
+				  <li><a href="textarea.html">Text Area</a></li>
+				  <li><a href="quiz.html">Trivia Quiz</a></li>
+				</ul>
+			</div>
+			<div id="mainContent">
+				<h1>Checkboxes</h1>
+
+				How do you get to school?<br>
+				<input type="checkbox" name="a1">I have a car<br>
+				<input type="checkbox" name="a1">I have a bike<br><br>
+				<b><i><span id="box1"></span></b></i><br><br>
+
+				<script type="text/javascript">
+					function checkQ1 (){
+
+						var q1 = document.getElementsByName("a1");
+
+						if(q1.item(0).checked) {
+							document.getElementById("box1").innerHTML = "What year?";
+						}
+						if(q1.item(1).checked) {
+							document.getElementById("box1").innerHTML = "You must live close.";
+						}
+						if(q1.item(0).checked && q1.item(1).checked) {
+							document.getElementById("box1").innerHTML = "Keeping your options open.";
+						}
+						if(!q1.item(0).checked && !q1.item(1).checked) {
+							document.getElementById("box1").innerHTML = "You didn't answer the question.";
+						}
+
+
+					}
+				</script>
+
+
+
+
+				What languages do you speak?<br>
+				<input type="checkbox" name="a2">English<b><i><span id="l1"></span></i></b><br>
+				<input type="checkbox" name="a2">French<b><i><span id="l2"></b></i></span><br>
+				<input type="checkbox" name="a2">Spanish<b><i><span id="l3"></b></i></span><br>
+				<input type="checkbox" name="a2">Mandarin<b><i><span id="l4"></b></i></span><br><br>
+
+				<b><i><span id="box2"></span></b></i><br><br><br>	
+
+				<script type="text/javascript">
+					function checkQ2 (){
+
+						var q2 = document.getElementsByName("a2");
+
+						var message = "";
+
+						if(q2.item(0).checked) {
+							document.getElementById("l1").innerHTML = "Hello.";
+						}
+						if(q2.item(1).checked) {
+							document.getElementById("l2").innerHTML = "Bonjour.";
+						}
+						if(q2.item(2).checked) {
+							document.getElementById("l3").innerHTML = "Hola!";
+						}
+						if(q2.item(3).checked) {
+							document.getElementById("l4").innerHTML = "Nihao.";
+						}
+						if(!q2.item(0).checked && !q2.item(1).checked && !q2.item(2).checked && !q2.item(3).checked) {
+							document.getElementById("box2").innerHTML = "You didn't submit anything.";
+						} else {
+							document.getElementById("box2").innerHTML = "";
+						}
+
+
+					}
+				</script>
+
+
+
+
+				<input type = "submit" value="Check my answers" onclick="javascript:check()"/>
+
+				<script type="text/javascript">
+					function check() {
+						checkQ1();
+						checkQ2();
+					}
+				</script>
+								
+			</div>
+
+			
+
+
+			<div id="footer"></div>
+		</div>
+
+
+	</body>
+</html>

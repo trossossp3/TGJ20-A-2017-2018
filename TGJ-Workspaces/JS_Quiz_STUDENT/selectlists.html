@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<title>Select Lists</title>
+	</head>
+	<body>
+		<div id="mainSection">
+			<div id="header">
+				<ul class="navbar">
+				  <li><a href="home.html">Home</a></li>
+				  <li><a href="textfields.html">Text/Date Fields</a></li>
+				  <li><a href="checkboxes.html">Checkboxes</a></li>
+				  <li><a href="radiobuttons.html">Radio Buttons</a></li>
+				  <li><a class="active" href="selectlists.html">Select Lists</a></li>
+				  <li><a href="textarea.html">Text Area</a></li>
+				  <li><a href="quiz.html">Trivia Quiz</a></li>
+				</ul>
+			</div>
+			<div id="mainContent">
+				<h1>Select List</h1>
+
+				Which is your favourite type of car?
+				<select>
+					<option>---Select one</option>
+					<option name="a1">Volvo</option>
+					<option name="a1">Saab</option>
+					<option name="a1">Fiat</option>
+					<option name="a1">Audi</option>
+				</select><br><br><br>
+				<b><i><span id="display"></span></i></b><br><br>
+
+				<input type = "submit" value="Check my answers" onclick="javascript:check()"/>
+
+				<script type="text/javascript">
+
+				function check (){
+					var a1 = document.getElementsByName("a1");
+
+					if(a1.item(0).selected){document.getElementById("display").innerHTML = "Volvo more like shnovo";}
+					if(a1.item(1).selected){document.getElementById("display").innerHTML = "saab more like baas";}
+					if(a1.item(2).selected){document.getElementById("display").innerHTML = "Fiat more like miat";}
+					if(a1.item(3).selected){document.getElementById("display").innerHTML = "audi more like auby cars";}
+					if(!a1.item(0).selected && !a1.item(1).selected && !a1.item(2).selected && !a1.item(3).selected){
+						document.getElementById("display").innerHTML = "submit a response";}
+					
+				}
+				</script>
+
+				
+			</div>
+			<div id="footer"></div>
+		</div>
+	</body>
+</html>

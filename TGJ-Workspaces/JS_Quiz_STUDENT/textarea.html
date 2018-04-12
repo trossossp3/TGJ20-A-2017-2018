@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<title>Text Areas</title>
+	</head>
+	<body>
+		<div id="mainSection">
+			<div id="header">
+				<ul class="navbar">
+				  <li><a href="home.html">Home</a></li>
+				  <li><a href="textfields.html">Text/Date Fields</a></li>
+				  <li><a href="checkboxes.html">Checkboxes</a></li>
+				  <li><a href="radiobuttons.html">Radio Buttons</a></li>
+				  <li><a href="selectlists.html">Select Lists</a></li>
+				  <li><a class="active" href="textarea.html">Text Area</a></li>
+				  <li><a href="quiz.html">Trivia Quiz</a></li>
+				</ul>
+			</div>
+			<div id="mainContent">
+				<h1>Text Area</h1>
+
+				Write a few paragraphs about yourself:<br><br>
+				<textarea id="a1" rows="8" cols="80"></textarea><br><br>
+
+				<input type="button" value="Submit" onclick="javascript:check()"/><br><br>
+				<b><i><span id="textarearesult"></span></i></b><br><br>
+
+
+
+				<script type="text/javascript">
+				function check() {
+					var res = a1.value;
+
+					if(res == "") {
+						document.getElementById("textarearesult").innerHTML = "You didn't submit anything.";
+					} else {
+						document.getElementById("textarearesult").innerHTML = "Ok, you've submitted a response.";
+					}
+				}
+			</script>
+
+
+			</div>
+			<div id="footer"></div>
+		</div>
+	</body>
+</html>

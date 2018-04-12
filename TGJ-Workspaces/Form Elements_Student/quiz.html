@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Input Fields</title>
+</head>
+
+<body>
+
+    <div id="header">
+        <ul class="navbar">
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="textfields.html">Text/Date Fields</a>
+            </li>
+            <li>
+                <a href="checkboxes.html">Checkboxes</a>
+            </li>
+            <li>
+                <a href="radiobuttons.html">Radio Buttons</a>
+            </li>
+            <li>
+                <a href="selectlists.html">Select Lists</a>
+            </li>
+            <li>
+                <a href="textarea.html">Text Area</a>
+            </li>
+            <li>
+                <a href="quiz.html">Try Our Quiz!</a>
+            </li>
+
+        </ul>
+    </div>
+    <div id=mainContent>
+        <form id="regForm" action="/file.php">
+
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">Name:
+                <p>
+                    <input placeholder="First name..." oninput="this.className = ''" name="fname">
+                </p>
+                <p>
+                    <input placeholder="Last name..." oninput="this.className = ''" name="lname">
+                </p>
+            </div>
+            <div class="tab">Login Info:
+                <p>
+                    <input placeholder="Username..." oninput="this.className = ''" name="uname">
+                </p>
+                <p>
+                    <input placeholder="Password..." oninput="this.className = ''" name="pword" type="password">
+                </p>
+            </div>
+            <div class="tab">What Is Your Favourite Programming Language
+                <br>
+                <input type="radio" oninput="this.className = ''" name="Flang">Java
+
+                <input type="radio" oninput="this.className = ''" name="Flang">Python
+
+                <input type="radio" oninput="this.className = ''" name="Flang">JavaScript
+
+                <input type="radio" oninput="this.className = ''" name="Flang">C
+
+                <input type="radio" oninput="this.className = ''" name="Flang">C#
+
+                <input type="radio" oninput="this.className = ''" name="Flang">C++
+            </div>
+            <div class="tab">When Did Canada Become a Country:
+                <p>
+                    <input class="quizIn" type="date" oninput="this.className = ''" name="Cdate">
+                </p>
+
+            </div>
+            <div class="tab">Which Brand Makes KitKat
+                <select>
+                    <option value="select one" oninput="this.className = ''">-----</option>
+                    <option value="Wonka" oninput="this.className = ''">Wonka</option>
+                    <option value="Nestle" oninput="this.className = ''">Nestle</option>
+                    <option value="Trent Inc." oninput="this.className = ''">Trent INC.</option>
+                </select>
+            </div>
+            <hr>
+            <div class="tab">Incline Bench Press Primarly Works the Pectroalis Major
+                <br>
+                <input class="quizIn" type="radio" oninput="this.className = ''" name="Ctrue">True
+                <br>
+                <input class="quizIn" type="radio" oninput="this.className = ''" name="Cfalse">False
+
+            </div>
+            <div class="tab">Which of the Following Excersises Work the Biceps
+                <input class="quizIn" type="checkbox" oninput="this.className=''" name="ch1" value="preacher">Preacher Curls
+                <input class="quizIn" type="checkbox" oninput="this.className=''" name="ch1" value="cgBench">Close Grip Bench Press
+                <input class="quizIn" type="checkbox" oninput="this.className=''" name="ch1" value="barCurls">Barbell Curls
+                <input class="quizIn" type="checkbox" oninput="this.className=''" name="ch1" value="legRaises">Hangin Leg Raises
+            </div>
+            <div class="tab">What is the Capital of Canada
+                <input class="quizIn" type="text" placeholder="Type Answer Here" oninput="this.className=''" name="capCan"></input>
+            </div>
+            <div class="tab">What are Your Political Views
+                <br>
+                <textarea name="polit" rows="10" cols="100">
+            Answer must be: Over 100 words, MLA8 cited, and be the same as my political views
+            </textarea>
+            </div>
+            <div class="tab">In a Fight Who Would Win
+                <select>
+                    <option value="select one" oninput="this.className = ''">-----</option>
+                    <option value="Gorilla" oninput="this.className = ''">Gorilla</option>
+                    <option value="Squid" oninput="this.className = ''">Squid</option>
+                    <option value="TGJ20" oninput="this.className = ''">TGJ20 Student</option>
+                    <option value="Human" oninput="this.className = ''">Human</option>
+                    <option value="Elon" oninput="this.className = ''">Elon Musk</option>
+                </select>
+            </div>
+            <div class="tab">Trent Rossos Will Crash and Burn When He is Older
+                <br>
+                <input class="quizIn" type="radio" oninput="this.className = ''" name="Ttrue">True
+                <br>
+                <input class="quizIn" type="radio" oninput="this.className = ''" name="Ffalse">False
+            </div>
+            <div class="tab">What is the URL Of Trent Rossos's Website
+                <input class="quizIn" type="text" placeholder="Type Answer Here" oninput="this.className=''" name="capCan"></input>
+            </div>
+
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+            </div>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+        </form>
+    </div>
+    <script src="js/script.js">
+
+    </script>
+</body>
+
+</html>

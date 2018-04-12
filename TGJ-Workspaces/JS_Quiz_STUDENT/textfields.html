@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<title>Input Fields</title>
+	</head>
+	<body>
+		<div id="mainSection">
+			<div id="header">
+				<ul class="navbar">
+				  <li><a href="home.html">Home</a></li>
+				  <li><a class="active" href="textfields.html">Text/Date Fields</a></li>
+				  <li><a href="checkboxes.html">Checkboxes</a></li>
+				  <li><a href="radiobuttons.html">Radio Buttons</a></li>
+				  <li><a href="selectlists.html">Select Lists</a></li>
+				  <li><a href="textarea.html">Text Area</a></li>
+				  <li><a href="quiz.html">Trivia Quiz</a></li>
+				</ul>
+			</div>
+			<div id="mainContent">
+			<h1>Input Fields (Text, Dates, Passwords, etc)</h1>
+			<p>Input fields are text fields that are created using the input element in html.</p>
+
+			<b>What is your name?</b><br><br>
+			<i>My name is <input type="text" id="q1"></i><br><br>
+			<input type = "submit" value="Check my answer" onclick="javascript:check()"/><br><br>
+			<b><i><span id="display"></span></i></b><br><br><br>
+
+			<script type="text/javascript">
+				function check() {
+					var a1 = q1.value;
+
+					if(a1 == "") {
+						document.getElementById("display").innerHTML = "You didn't submit anything.";
+					} else {
+						document.getElementById("display").innerHTML = "Hello " + a1 + ".";
+					}
+				}
+			</script>
+
+			First name:
+			<input type="text" name="firstname">
+
+			Last name:
+			<input type="text" name="lastname"><br><br>
+
+			First name:
+			<input type="text" name="firstname" placeholder="your name">
+
+			Last name:
+			<input type="text" name="lastname" placeholder="last name">
+
+			<p>
+				Username:<input type="text" name="username"><br><br>
+				Password:<input type="Password" name="psw"><br><br>
+				<input type="submit" name="submit" value="CLICK ME">
+			</p>
+			<p> DATE OF BIRTH:
+			<input type="date"/> 
+				</p><br>
+
+			COLOR PICKER:
+			<input type="color" name="color"><br><br>
+
+			NUMBER:
+			<input type="number" name="number" min="0" max="100">
+			</div>
+			<div id="footer"></div>
+		</div>
+	</body>
+</html>

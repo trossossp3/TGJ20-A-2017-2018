@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Geo Trivia</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<div id="mainSection">
+		<div id="header">
+			
+		</div>
+		<div id="mainContent">
+			<form>
+
+				
+					Question 1: What public national holiday falls on July 1?
+					<br>
+					<input type="radio" name="q1">Memorial Day
+					<br>
+					<input type="radio" name="q1">Christmas Day
+					<br>
+					<input type="radio" name="q1">Canada Day
+					<br>
+					<input type="radio" name="q1">Victoria Day
+					<br>
+					<br>
+					<b>
+						<i>
+							<span id="display1"></span>
+					</b>
+					</i>
+				
+				<br>
+				<br>
+
+
+					Question 2: How many territories does Canada have in total?
+					<br>
+					<input type="radio" name="q2">1
+					<br>
+					<input type="radio" name="q2">2
+					<br>
+					<input type="radio" name="q2">3
+					<br>
+					<input type="radio" name="q2">4
+					<br>
+					<br>
+					<b>
+						<i>
+							<span id="display2"></span>
+					</b>
+					</i>
+					<br>
+				
+
+				
+					<br> Question 3: Which is the only official bilingual province in Canada?
+					<br>
+					<input type="radio" name="q3">Ontario
+					<br>
+					<input type="radio" name="q3">Quebec
+					<br>
+					<input type="radio" name="q3">New Brunswick
+					<br>
+					<input type="radio" name="q3">Nova Scotia
+					<br>
+					<br>
+					<b>
+						<i>
+							<span id="display3"></span>
+					</b>
+					</i>
+					<br>
+				
+
+				
+					<br> Question 4: What does the word "Inuit" mean?
+					<br>
+					<input type="radio" name="q4">The Land
+					<br>
+					<input type="radio" name="q4">The North
+					<br>
+					<input type="radio" name="q4">The people
+					<br>
+					<input type="radio" name="q4">The fish
+					<br>
+					<br>
+					<b>
+						<i>
+							<span id="display4"></span>
+					</b>
+					</i>
+					<br>
+				
+				
+
+
+					</script>
+					<br> Question 5: Who was the first prime minister of Canada?
+					<br>
+					<input type="radio" name="q5">Pierre Elliott Trudeau
+					<br>
+					<input type="radio" name="q5">William Lyon McKenzie
+					<br>
+					<input type="radio" name="q5">John A McDonaled
+					<br>
+					<input type="radio" name="q5">Wilfrid Laurier
+					<br>
+					<br>
+					<b>
+						<i>
+							<span id="display5"></span>
+					</b>
+					</i>
+					<br>
+					<br>
+				
+
+
+
+
+				<b>
+					<i>
+						<span id="score"></span>
+					</i>
+				</b>
+				<br>
+				<br>
+
+
+
+				<input type="button" id="submit" value="Submit" onclick="javascript:checkAnswers()"/>
+
+				<script type="text/javascript">
+
+					function checkAnswers() {
+						var count = 0;
+						var message = null;
+
+						var q1 = document.getElementsByName("q1");
+
+						if (q1.item(0).checked) {
+							document.getElementById("display1").innerHTML = "Wrong";
+							document.getElementById("display1").style.color="red";
+						}
+						if (q1.item(1).checked) {
+							document.getElementById("display1").innerHTML = "Wrong";
+							document.getElementById("display1").style.color="red";
+						}
+						if (q1.item(2).checked) {
+							document.getElementById("display1").innerHTML = "Correct";
+							count++;
+							document.getElementById("display1").style.color="green";
+						};
+						if (q1.item(3).checked) {
+							document.getElementById("display1").innerHTML = "Wrong";
+							document.getElementById("display1").style.color="red";
+						}
+						if (!q1.item(0).checked && !q1.item(1).checked && !q1.item(2).checked && !q1.item(3).checked) {
+
+							document.getElementById("display1").innerHTML = "submit a response";
+							document.getElementById("display1").style.color="black";
+						}
+
+
+						var q2 = document.getElementsByName("q2");
+						if (q2.item(0).checked) {
+							document.getElementById("display2").innerHTML = "Wrong";
+							document.getElementById("display2").style.color="red";
+						}
+						if (q2.item(1).checked) {
+							document.getElementById("display2").innerHTML = "Wrong";
+							document.getElementById("display2").style.color="red";
+						}
+						if (q2.item(2).checked) {
+							document.getElementById("display2").innerHTML = "Correct";
+							document.getElementById("display2").style.color="green";
+							count++;
+						};
+						if (q2.item(3).checked) {
+							document.getElementById("display2").innerHTML = "Wrong";
+							document.getElementById("display2").style.color="red";
+						}
+						if (!q2.item(0).checked && !q2.item(1).checked && !q2.item(2).checked && !q2.item(3).checked) {
+							document.getElementById("display2").style.color="black";
+							document.getElementById("display2").innerHTML = "submit a response";
+						}
+
+						var q3 = document.getElementsByName("q3");
+						if (q3.item(0).checked) {
+							document.getElementById("display3").innerHTML = "Wrong";
+							document.getElementById("display3").style.color="red";
+						}
+						if (q3.item(1).checked) {
+							document.getElementById("display3").innerHTML = "Wrong";
+							document.getElementById("display3").style.color="red";
+						}
+						if (q3.item(2).checked) {
+							document.getElementById("display3").innerHTML = "Correct";
+							document.getElementById("display3").style.color="green";
+							count++;
+						};
+						if (q3.item(3).checked) {
+							document.getElementById("display3").innerHTML = "Wrong";
+							document.getElementById("display3").style.color="red";
+						}
+						if (!q3.item(0).checked && !q3.item(1).checked && !q3.item(2).checked && !q3.item(3).checked) {
+							document.getElementById("display3").style.color="black";
+							document.getElementById("display3").innerHTML = "submit a response";
+						}
+
+						var q4 = document.getElementsByName("q4");
+						if (q4.item(0).checked) {
+							document.getElementById("display4").innerHTML = "Wrong";
+							document.getElementById("display4").style.color="red";
+						}
+						if (q4.item(1).checked) {
+							document.getElementById("display4").innerHTML = "Wrong";
+							document.getElementById("display4").style.color="red";
+						}
+						if (q4.item(2).checked) {
+							document.getElementById("display4").innerHTML = "Correct";
+							document.getElementById("display4").style.color="green";
+							count++;
+						};
+						if (q4.item(3).checked) {
+							document.getElementById("display4").innerHTML = "Wrong";
+							document.getElementById("display4").style.color="red";
+						}
+						if (!q4.item(0).checked && !q4.item(1).checked && !q4.item(2).checked && !q4.item(3).checked) {
+							document.getElementById("display4").style.color="black";
+							document.getElementById("display4").innerHTML = "submit a response";
+						}
+						var q5 = document.getElementsByName("q5");
+						if (q5.item(0).checked) {
+							document.getElementById("display5").innerHTML = "Wrong";
+							document.getElementById("display5").style.color="red";
+						}
+						if (q5.item(1).checked) {
+							document.getElementById("display5").innerHTML = "Wrong";
+							document.getElementById("display5").style.color="red";
+						}
+						if (q5.item(2).checked) {
+							document.getElementById("display5").innerHTML = "Correct"
+							count++;
+							document.getElementById("display5").style.color="green";
+						};
+						if (q5.item(3).checked) {
+							document.getElementById("display5").innerHTML = "Wrong";
+							document.getElementById("display5").style.color="red";
+						}
+						if (!q5.item(0).checked && !q5.item(1).checked && !q5.item(2).checked && !q5.item(3).checked) {
+
+							document.getElementById("display5").innerHTML = "submit a response";
+							document.getElementById("display5").style.color="black";
+						}
+
+						document.getElementById("score").innerHTML = count + "/5";
+
+						if (count == 0){
+							message = "That was impressive"
+						}if (count == 1){
+							message = "This is sad."
+						}if (count == 2){
+							message = "40% aren't you a scholar."
+						}if (count == 3){
+							message = "Wow a passing grade *clap* *clap*."
+						}if (count == 4){
+							message = "Almost perfect don't worry this quiz is really hard."
+						}if (count == 5){
+							message = "Great job you pressed a button 5 times."
+						}
+						
+						alert("Your score was "+count+"\n"+message);
+
+
+					}
+
+				</script>
+
+
+
+			</form>
+
+		</div>
+		<div id="footer"></div>
+	</div>
+</body>
+
+</html>

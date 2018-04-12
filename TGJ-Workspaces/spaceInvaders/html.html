@@ -1,65 +1,164 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>SPaCeInvAdeRS</title>
-		<script type="text/javascript" src="JavaScipt/script.js"></script>
-       <link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<script type="text/javascript" src="JavaScipt/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 </head>
-	
+
 
 </head>
+
 <body onload="init();">
-  	  <canvas id="myCanvas" width="1500" height="800"></canvas>
-  	  <script>
-  	  	var screen, input, frames;
-  	  	var alSprite, taSprite, ciSprite;
-  	  	var aliens, dir, tank, bullets, cities;
+	<canvas id="myCanvas" width="1500" height="800"></canvas>
+	<script>
+		var screen, input, frames;
+		var alSprite, taSprite, ciSprite;
+		var aliens, dir, tank, bullets, cities;
 
-  	  	function main(){
-  	  		screen = new Screen(510, 600);
-  	  		input = new InputHandler();
+		function main() {
+			display = new Screen(510, 600);
+			input = new InputHandler();
 
-  	  		var img = new Image();
-  	  		img.addEventListener("load", function(){
-  	  			
-  	  			alSprite=[
-  	  				[new Sprite(this, 0, 0,22,16), new Sprite(this, 0,16,22,16)],
-  	  				[new Sprite(this, 22,0,16,16), new Sprite(this, 22,16,16,16)],
-  	  				[new Sprite(this, 38,0,24,16), new Sprite(this,38,16,24,16)],	
-  	  			];
-  	  			taSprite = new Sprite(this);
-  	  			ciSprite = new Sprite(this);	
+			var img = new Image();
+			img.addEventListener("load", function () {
 
-  	  			init();
+				alSprite = [
+					[new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)],
+					[new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
+					[new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)],
+				];
 
-  	  			run();
+				taSprite = new Sprite(this, 62, 0, 22, 16);
+				ciSprite = new Sprite(this, 84, 8, 36, 24);
 
-  	  		})
+				init();
 
-  	  		img.scr = "images/invaders.png"
+				run();
 
-  	  	};
+			});
 
-  	  	function init(){};
+			img.scr = "images/invaders.png";
 
-  	  	function run(){
-          var loop = function(){
-            update();
-            render();
+		};
 
-            window.requestAnmimationFrame(loop, screen.canvas);
-          };
-           window.requestAnmimationFrame(loop, screen.canvas);
-        };
+		function init() {
+			// set start settings
+			frames = 0;
+			spFrame = 0;
+			lvFrame = 60;
+			dir = 1;
+			// create the tank object
+			tank = {
+				sprite: taSprite,
+				x: (display.width - taSprite.w) / 2,
+				y: display.height - (30 + taSprite.h)
+			};
+			// initatie bullet array
+			bullets = [];
+			// create the cities object (and canvas)
+			cities = {
+				canvas: null,
+				ctx: null,
+				y: tank.y - (30 + ciSprite.h),
+				h: ciSprite.h,
+				/**
+				 * Create canvas and game graphic context
+				 */
+				init: function () {
+					// create canvas and grab 2d context
+					this.canvas = document.createElement("canvas");
+					this.canvas.width = display.width;
+					this.canvas.height = this.h;
+					this.ctx = this.canvas.getContext("2d");
+					for (var i = 0; i < 4; i++) {
+						this.ctx.drawImage(ciSprite.img, ciSprite.x, ciSprite.y,
+							ciSprite.w, ciSprite.h,
+							68 + 111 * i, 0, ciSprite.w, ciSprite.h);
+					}
+				},
+				/**
+				 * Create damage effect on city-canvas
+				 * 
+				 * @param  {number} x x-coordinate
+				 * @param  {number} y y-coordinate
+				 */
+				generateDamage: function (x, y) {
+					// round x, y position
+					x = Math.floor(x / 2) * 2;
+					y = Math.floor(y / 2) * 2;
+					// draw dagame effect to canva
+					this.ctx.clearRect(x - 2, y - 2, 4, 4);
+					this.ctx.clearRect(x + 2, y - 4, 2, 4);
+					this.ctx.clearRect(x + 4, y, 2, 2);
+					this.ctx.clearRect(x + 2, y + 2, 2, 2);
+					this.ctx.clearRect(x - 4, y + 2, 2, 2);
+					this.ctx.clearRect(x - 6, y, 2, 2);
+					this.ctx.clearRect(x - 4, y - 4, 2, 2);
+					this.ctx.clearRect(x - 2, y - 6, 2, 2);
+				},
+				/**
+				 * Check if pixel at (x, y) is opaque
+				 * 
+				 * @param  {number} x x-coordinate
+				 * @param  {number} y y-coordinate
+				 * @return {bool}     boolean value if pixel opaque
+				 */
+				hits: function (x, y) {
+					// transform y value to local coordinate system
+					y -= this.y;
+					// get imagedata and check if opaque
+					var data = this.ctx.getImageData(x, y, 1, 1);
+					if (data.data[3] !== 0) {
+						this.generateDamage(x, y);
+						return true;
+					}
+					return false;
+				}
+			};
+			cities.init(); // initiate the cities
+			// create and populate alien array
+			aliens = [];
+			var rows = [1, 0, 0, 2, 2];
+			for (var i = 0, len = rows.length; i < len; i++) {
+				for (var j = 0; j < 10; j++) {
+					var a = rows[i];
+					// create right offseted alien and push to alien
+					// array
+					aliens.push({
+						sprite: alSprite[a],
+						x: 30 + j * 30 + [0, 4, 0][a],
+						y: 30 + i * 30,
+						w: alSprite[a][0].w,
+						h: alSprite[a][0].h
+					});
+				}
+			}
+		};
 
-  	  	function update(){};
 
-  	  	function render(){
-          screen.drawSprite(alSprite[0][0], 10, 10);
-        };
+		function run() {
+			var loop = function () {
+				update();
+				render();
 
-  	  	main();
-  	  </script>
+				window.requestAnmimationFrame(loop, display.canvas);
+			};
+			window.requestAnmimationFrame(loop, display.canvas);
+		};
+
+		function update() {
+			
+		 };
+
+		function render() {
+			screen.drawSprite(alSprite[0][0], 10, 10);
+		};
+
+		main();
+	</script>
 
 </body>
+
 </html>
