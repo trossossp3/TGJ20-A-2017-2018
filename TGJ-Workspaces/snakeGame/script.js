@@ -37,7 +37,7 @@ var drawModule = (function () {
 
     var drawSnake = function () {
         //the initall snake will have 5 square
-        var length = 4;
+        var length = 1;
         snake = [];
         // Using a for loop we push the 5 elements inside the array(squares).
         // Every element will have x = 0 and the y will take the value of the index.
