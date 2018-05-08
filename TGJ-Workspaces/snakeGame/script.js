@@ -5,7 +5,7 @@ var w = 350;
 var h = 350;
 var score = 0;
 var snake;
-var snakeSize = 10;
+
 var food;
 
 var drawModule = (function () {
@@ -37,7 +37,7 @@ var drawModule = (function () {
 
     var drawSnake = function () {
         //the initall snake will have 5 square
-        var length = 1;
+        var length = 5;
         snake = [];
         // Using a for loop we push the 5 elements inside the array(squares).
         // Every element will have x = 0 and the y will take the value of the index.
@@ -85,6 +85,10 @@ var drawModule = (function () {
             btn.removeAttribute('disabled', true);
             // clean the canvas
             ctx.clearRect(0, 0, w, h);
+            //display score
+            alert("your score was: "+score);
+            //reset score to 0
+            score = 0;
             gameloop = clearInterval(gameloop);
             return;
         }
@@ -134,10 +138,12 @@ var drawModule = (function () {
         for (var i = 0; i < array.length; i++) {
             if (array[i].x === x && array[i].y === y)
                 return true;
+                
         }
         return false;
+        
     }
-
+   
     var init = function () {
         direction = 'down';
         drawSnake();
@@ -154,47 +160,48 @@ var drawModule = (function () {
 }());
 
 
+
 (function (window, document, drawModule, undefined) {
 
     var btn = document.getElementById('btn');
-    btn.addEventListener("click", function(){ drawModule.init();});
-    
-        document.onkeydown = function(event) {
-    
-            keyCode = window.event.keyCode; 
-            keyCode = event.keyCode;
-    
-            switch(keyCode) {
-            
-            case 37: 
-              if (direction != 'right') {
-                direction = 'left';
-              }
-              console.log('left'); 
-              break;
-    
+    btn.addEventListener("click", function () { drawModule.init(); });
+
+    document.onkeydown = function (event) {
+
+        keyCode = window.event.keyCode;
+        keyCode = event.keyCode;
+
+        switch (keyCode) {
+
+            case 37:
+                if (direction != 'right') {
+                    direction = 'left';
+                }
+                console.log('left');
+                break;
+
             case 39:
-              if (direction != 'left') {
-              direction = 'right';
-              console.log('right');
-              }
-              break;
-    
+                if (direction != 'left') {
+                    direction = 'right';
+                    console.log('right');
+                }
+                break;
+
             case 38:
-              if (direction != 'down') {
-              direction = 'up';
-              console.log('up');
-              }
-              break;
-    
+                if (direction != 'down') {
+                    direction = 'up';
+                    console.log('up');
+                }
+                break;
+
             case 40:
-              if (direction != 'up') {
-              direction = 'down';
-              console.log('down');
-              }
-              break;
-              }
-          }
-    
-    
-    })(window, document, drawModule);
+                if (direction != 'up') {
+                    direction = 'down';
+                    console.log('down');
+                }
+                break;
+        }
+    }
+
+
+})(window, document, drawModule);

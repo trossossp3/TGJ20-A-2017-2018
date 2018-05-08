@@ -1,10 +1,9 @@
 #home {
     width: 350px;
-    height: 350px;
-    background-image: url('../img/snake.png');
+    height: 350px;    
     background-size: auto 350px;
     background-repeat: no-repeat;
-    background-color: lightblue;
+    background-color: rgb(51, 161, 197);
     background-position: center center;
     padding: 0;
     margin: 03;
