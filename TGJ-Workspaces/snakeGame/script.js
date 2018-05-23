@@ -6,6 +6,7 @@ var h = 350;
 var score = 0;
 var snake;
 
+
 var food;
 
 var drawModule = (function () {
@@ -21,7 +22,7 @@ var drawModule = (function () {
 
     var pizza = function (x, y) {
         // this is the border of the pizza
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = 'blue';
         ctx.fillRect(x * snakeSize, y * snakeSize, snakeSize, snakeSize);
         // this is the singel square
         ctx.fillStyle = 'red';
@@ -37,7 +38,7 @@ var drawModule = (function () {
 
     var drawSnake = function () {
         //the initall snake will have 5 square
-        var length = 5;
+        var length = 1;
         snake = [];
         // Using a for loop we push the 5 elements inside the array(squares).
         // Every element will have x = 0 and the y will take the value of the index.
@@ -65,13 +66,15 @@ var drawModule = (function () {
    */
 
         if (direction == 'right') {
-            snakeX++;
+            snakeX++;              
         }
         else if (direction == 'left') {
             snakeX--;
         }
+
         else if (direction == 'up') {
             snakeY--;
+
         } else if (direction == 'down') {
             snakeY++;
         }
@@ -98,6 +101,8 @@ var drawModule = (function () {
             score++;
 
             createFood(); //Create new food
+
+           
         } else {
             var tail = snake.pop(); //pops out the last cell
             tail.x = snakeX;
