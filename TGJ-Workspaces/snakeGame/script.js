@@ -1,10 +1,14 @@
 var mycanvas = document.getElementById('mycanvas');
 var ctx = mycanvas.getContext('2d');
+var coinSound = document.getElementById("coinSound");
+
 var snakeSize = 10;
 var w = 350;
 var h = 350;
 var score = 0;
 var snake;
+var soundFlag = true;
+
 
 
 var food;
@@ -98,8 +102,15 @@ var drawModule = (function () {
         //If the snake eats food it becomes longer and this means that, in this case, you shouldn't pop out the last element of the array.
         if (snakeX == food.x && snakeY == food.y) {
             var tail = { x: snakeX, y: snakeY }; //Create a new head instead of moving the tail
-            score++;
-
+            score++;            
+        
+            if (soundFlag) {
+                coinSound.pause();
+                coinSound.currentTime = 0;
+                coinSound.play();
+                soundFlag = false;
+            }
+            
             createFood(); //Create new food
 
            
@@ -120,7 +131,7 @@ var drawModule = (function () {
         //put the score text
         scoreText();
     }
-
+    
     var createFood = function () {
         food = {
             // generate random coordinates
@@ -154,6 +165,8 @@ var drawModule = (function () {
         drawSnake();
         createFood();
         gameloop = setInterval(paint, 80);
+         
+      
     }
 
     //run init at end of module
