@@ -1,7 +1,7 @@
 var mycanvas = document.getElementById('mycanvas');
 var ctx = mycanvas.getContext('2d');
 var coinSound = document.getElementById("coinSound");
-
+var gameOver = document.getElementById("gameOver");
 var snakeSize = 10;
 var w = 350;
 var h = 350;
@@ -88,12 +88,21 @@ var drawModule = (function () {
         If the check_collision is true, it means the the snake has crashed on its body itself, then the game will be stopped again. 
         */
         if (snakeX == -1 || snakeX == w / snakeSize || snakeY == -1 || snakeY == h / snakeSize || checkCollision(snakeX, snakeY, snake)) {
-            //restart game
+          //restart game
             btn.removeAttribute('disabled', true);
             // clean the canvas
             ctx.clearRect(0, 0, w, h);
-            //display score
-            alert("your score was: "+score);
+             //display score
+            soundFlag = true;
+            sleep(500);
+            if (soundFlag) {                
+                gameOver.pause();
+                gameOver.currentTime = 0;
+                gameOver.play();
+                alert("your score was: "+score);
+                soundFlag = false;
+            } 
+           
             //reset score to 0
             score = 0;
             gameloop = clearInterval(gameloop);
@@ -102,8 +111,8 @@ var drawModule = (function () {
         //If the snake eats food it becomes longer and this means that, in this case, you shouldn't pop out the last element of the array.
         if (snakeX == food.x && snakeY == food.y) {
             var tail = { x: snakeX, y: snakeY }; //Create a new head instead of moving the tail
-            score++;            
-        
+            soundFlag = true;
+            score++;                    
             if (soundFlag) {
                 coinSound.pause();
                 coinSound.currentTime = 0;
@@ -168,6 +177,15 @@ var drawModule = (function () {
          
       
     }
+    // function equivelent to sleep() in python
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
+      }
 
     //run init at end of module
     return {
