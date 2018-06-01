@@ -96,17 +96,19 @@ var drawModule = (function () {
                 //display score
                 
                 sleep(500);
+                
                 soundFlag = true;
                 if (soundFlag) {
-                
+                    gameOver.pause();
                     gameOver.currentTime = 0;
                     gameOver.play();                
                     soundFlag = false;
+                    
                 } 
 
                 
                 gameloop = clearInterval(gameloop);
-                alert("you at yourself!!"+ "\n"+"your score was: "+score);
+                alert("You ate yourself!!"+ "\n"+"Your score was: "+score);
                 
                 //reset score to 0
                 score = 0;
@@ -119,17 +121,19 @@ var drawModule = (function () {
              //display score
             
             sleep(500);
+            
             soundFlag = true;
             if (soundFlag) {
-            
+                gameOver.pause();
                 gameOver.currentTime = 0;
                 gameOver.play();                
                 soundFlag = false;
+                
             } 
 
             
             gameloop = clearInterval(gameloop);
-            alert("your score was: "+score);
+            alert("Stay in the canvas"+"\n"+"Your score was: "+score);
 
            
             //reset score to 0
